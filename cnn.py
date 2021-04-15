@@ -4,13 +4,13 @@ import torch.nn.functional as F
 
 class Net(nn.Module):
 
-    def __init__(self):
+    def __init__(self, out):
         super(Net, self).__init__()
         self.conv1 = nn.Conv2d(1, 6, 5)
         self.conv2 = nn.Conv2d(6, 16, 5)
         self.max_pool = nn.MaxPool2d(2, 2)
         self.avg_pool = nn.AvgPool2d(4)
-        self.fc = nn.Linear(16, 10)
+        self.fc = nn.Linear(16, out)
 
     def forward(self, x):
         x = self.max_pool(F.relu(self.conv1(x)))
