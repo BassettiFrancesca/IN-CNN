@@ -1,6 +1,4 @@
 import torch
-import torchvision
-import torchvision.transforms as transforms
 import cnn
 
 
@@ -11,9 +9,6 @@ def test(test_set, out):
     batch_size = 4
     num_workers = 2
 
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
-
-    #test_set = torchvision.datasets.MNIST(root='./data', train=False, download=True, transform=transform)
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
     net = cnn.Net(out).to(device)

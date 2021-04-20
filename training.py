@@ -1,6 +1,4 @@
 import torch
-import torchvision
-import torchvision.transforms as transforms
 import cnn
 import torch.optim as optim
 import torch.nn as nn
@@ -15,9 +13,6 @@ def train(train_set, num_epochs, out):
     learning_rate = 0.001
     momentum = 0.9
 
-    transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
-
-    #train_set = torchvision.datasets.MNIST(root='./data', train=True, download=True, transform=transform)
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
     net = cnn.Net(out).to(device)
