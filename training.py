@@ -1,5 +1,5 @@
 import torch
-import cnn
+import cnn1
 import torch.optim as optim
 import torch.nn as nn
 
@@ -15,7 +15,7 @@ def train(train_set, num_epochs, out):
 
     train_loader = torch.utils.data.DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers)
 
-    net = cnn.Net(out).to(device)
+    net = cnn1.Net(out).to(device)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=learning_rate, momentum=momentum)

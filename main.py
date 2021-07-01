@@ -2,18 +2,19 @@ import testing
 import training
 import time
 import prepare_dataset
+import variance
 
 
 def mnist_cnn():
 
-    acc_tree_a = 97.10
-    acc_tree_b = 95.60
+    acc_tree_a = 98.63
+    acc_tree_b = 98.53
 
-    digits = [[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]
+    digits = [[0], [3], [6], [7]]
 
-    num_epochs = 4
+    num_epochs = 2
     out = len(digits)
-    num_run = 3
+    num_run = 10
 
     start = time.time()
 
@@ -30,7 +31,10 @@ def mnist_cnn():
         sum_a += a
     mean_a = sum_a / len(accuracies)
 
+    var = variance.variance(accuracies)
+
     print(f'Mean of the {num_run} accuracies with {num_epochs} epochs: %.2f %%' % mean_a)
+    print(f'Variance: {var}\n')
     print(f'Difference is: %.2f' % (acc_tree_a - mean_a))
     print(f'Difference is: %.2f\n' % (acc_tree_b - mean_a))
 

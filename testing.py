@@ -1,5 +1,5 @@
 import torch
-import cnn
+import cnn1
 
 
 def test(test_set, out):
@@ -11,7 +11,7 @@ def test(test_set, out):
 
     test_loader = torch.utils.data.DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers)
 
-    net = cnn.Net(out).to(device)
+    net = cnn1.Net(out).to(device)
     PATH = './mnist_net.pth'
     net.load_state_dict(torch.load(PATH))
 
